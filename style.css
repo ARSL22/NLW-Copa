@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+
+} /* sector universal que vai tirar os preenchimentos das caixas */
+
+/* Mudar as cores das varias paginas.criar um seletor root  seleciona a 
+raiz do html e vai aplicar as cores que se coloca.
+Criamos a variavel(var) --card-color-primary e substituimos de onde fomos buscar.*/
+
+:root{
+   --card-color-primary: rgb(248, 178, 15);
+   --card-title-border-h2-color: #746615;
+}
+/*Agora queremos mudar a cor do body para ser diferene nos varios sitios.
+vamos criar classe blue no body das variaveis, nao esquecer de 
+meter a classe na tag body(html) para ser aceite esta cor.*/
+
+/*body.blue{
+   --card-color-primary: #338af3;
+   --card-title-border-h2-color: #338af3;
+}
+
+body.green{
+   --card-color-primary: green;
+   --card-title-border-h2-color: #00FF00;
+}*/
+
+ul{
+list-style: none;
+}/* para tirar os pontinhos das listas*/
+
+
+body {
+    background-color: #121214;
+    background-image: url(./assets/bg.svg);
+    background-position: top center;
+   background-repeat: repeat;
+   
+}
+
+#app {
+    width:fit-content; /* vamos colocar o conteudo dentro da caixinha*/
+    margin: 52px auto;/*deu espaço de cima (52px) mais o auto que ele preenche*/
+
+}
+header{
+    margin-bottom: 63px;
+    text-align: center;
+}
+ .card {
+    border-bottom: 2px solid var(--card-color-primary);
+    border-radius: 6px;
+    background:#1d1c19;
+    padding: 32px 23px;
+    width: 400px;
+    margin: 52px auto;
+ }
+
+ .card h2{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    border: 2px solid var(--card-title-border-h2-color);
+    padding: 8px 16px;
+    border-radius: 6px; /* arredonda a caixa*/
+    width: fit-content;
+    margin-inline: auto;
+    margin-bottom: 35px;
+    color: var(--card-color-primary);
+
+ }
+ .card h2 span{
+    color: azure;
+    font-size: 20px;
+    text-transform: uppercase;
+ }
+.card ul{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;/* espaço em entre cada um dos elementos*/
+}
+ .card ul li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+ }
+ .card ul li + li{ /* vamos procurar um li que tenha anterior a ele um li*/
+    padding-top: 24px;
+    border-top: 1px solid #746615;
+ }
+ .card ul li strong{
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 125%;
+    color: azure;
+ }
+ 
+.card img{
+    width: 80px;
+    padding: 42px 42px;
+}
+/* vamos fazer transiçoes(aula 04)*/
+
+.card ul li strong:hover,
+.card ul li img:hover{
+   transform: scale(1.1);
+}
+.card h2,
+.card ul li strong,
+.card ul li img {
+   transition: transform 0.3s;/*tempo que demora*/
+}
+/*Criar animaçoes:
+opacity de 0 significa escuro.e aumante a claridade subindo
+esta é a regra
+*/
+.card{
+   opacity: 0;
+   animation: appear .8s forwards;
+}
+
+@keyframes appear {
+   0%{
+   
+      opacity: 0;
+   }
+   100%{
+      opacity: 1;
+
+   }
+}
+
+/*
+fazer com que cada um dos card aparece sequencialmente 
+,fazendo atraves do css é assim: 
+.card:nth-child(1){
+   animation-delay: 1s;
+}
+.card:nth-child(2){
+   animation-delay: 2s;
+}
+.card:nth-child(3){
+   animation-delay: 3s;
+}
+.card:nth-child(4){
+   animation-delay: 4s;
+}
+se tivessemos muitos cartoes como fariamos?
+seria por javascript.entao vamos la.
+*/ 
+
+
+
+/* RESPONSIVIDADE PARA OS DISPOSITIVOS MOVEIS*/
+
+@media (min-width: 700px) {
+#cards{
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+
+}
